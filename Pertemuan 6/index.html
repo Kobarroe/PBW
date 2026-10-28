@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Talk Udinus</title>
+    
+    <!-- Memanggil Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Memanggil Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+
+    <!-- 1. NAVBAR (Menu Navigasi) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <!-- Ikon 1: Laptop -->
+            <a class="navbar-brand" href="#"><i class="bi bi-laptop"></i> Tech Talk Udinus</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#info">Info & Jadwal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pembicara">Pembicara</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#daftar">Daftar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. CAROUSEL (Slider Gambar) -->
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <!-- Gambar dummy/sementara -->
+                <img src="https://via.placeholder.com/1200x300?text=Selamat+Datang+di+Tech+Talk+Udinus" class="d-block w-100" alt="Banner 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x300?text=Jelajahi+Inovasi+Teknologi" class="d-block w-100" alt="Banner 2">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+    <!-- CONTAINER UTAMA -->
+    <div class="container mt-5">
+        
+        <!-- INFO & JADWAL (Menggunakan Grid System untuk Responsiveness) -->
+        <section id="info" class="mb-5">
+            <!-- Ikon 2: Info -->
+            <h2 class="text-center mb-4"><i class="bi bi-info-circle"></i> Info & Jadwal Acara</h2>
+            
+            <div class="row"> <!-- Awal pembagian kolom -->
+                <div class="col-md-6 mb-3"> <!-- Kolom Kiri -->
+                    <div class="p-3 border bg-light">
+                        <h4>Tentang Seminar</h4>
+                        <p>Seminar ini ditujukan untuk mahasiswa Informatika guna membahas perkembangan tren teknologi terkini.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3"> <!-- Kolom Kanan -->
+                    <div class="p-3 border bg-light">
+                        <h4>Jadwal</h4>
+                        <ul class="list-unstyled">
+                            <li><strong>08:00 WIB</strong> - Registrasi Ulang</li>
+                            <li><strong>09:00 WIB</strong> - Sesi Materi Utama</li>
+                            <li><strong>13:00 WIB</strong> - Workshop</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. DAFTAR PEMBICARA (Grid System + Card) -->
+        <section id="pembicara" class="mb-5">
+            <!-- Ikon 3: People -->
+            <h2 class="text-center mb-4"><i class="bi bi-people"></i> Daftar Pembicara</h2>
+            <div class="row">
+                <!-- col-md-4 artinya membagi 12 kolom layar menjadi masing-masing 4 kolom (jadi muat 3 kotak sejajar) -->
+                <div class="col-md-4 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Andi Suryadi</h5>
+                            <p class="card-text">Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Siti Aminah</h5>
+                            <p class="card-text">Data Scientist</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Budi Santoso</h5>
+                            <p class="card-text">Cyber Security Expert</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FORM PENDAFTARAN -->
+        <section id="daftar" class="mb-5">
+            <!-- Ikon 4: Pencil -->
+            <h2 class="text-center mb-4"><i class="bi bi-pencil-square"></i> Form Pendaftaran</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6"> <!-- Form dibatasi lebarnya agar tidak terlalu memanjang -->
+                    <form class="card p-4 shadow-sm">
+                        <div class="mb-3">
+                            <label class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" placeholder="Masukkan nama kamu">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">NIM / Instansi</label>
+                            <input type="text" class="form-control" placeholder="Contoh: A11.2023...">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Daftar Sekarang</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- Akhir Container Utama -->
+
+    <!-- 5. FOOTER -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">&copy; 2026 Panitia Tech Talk Udinus</p>
+    </footer>
+
+    <!-- Memanggil Bootstrap JS (Wajib agar Dropdown & Carousel bisa digeser) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

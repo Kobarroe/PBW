@@ -1,0 +1,345 @@
+/* =========================================================
+   TOKO SEPATU "LANGKAH"
+   Arah desain: biru kobalt yang sporty + label harga kuning,
+   foto sepatu tampil besar di atas panel abu kebiruan.
+   Tidak perlu mengubah index.html.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
+
+/* --- PALET & VARIABEL --- */
+:root {
+    --biru: #1634b8;
+    --biru-tua: #0e2280;
+    --kuning: #ffc93c;
+    --ink: #14192e;
+    --abu: #5b6275;
+    --garis: #e3e7f0;
+    --panel: #eef1f9;
+    --latar: #e6eaf3;
+}
+
+/* --- PENGATURAN DASAR & KOTAK UTAMA --- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: var(--ink);
+    background-color: var(--latar);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.5;
+}
+
+#container-utama {
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden; /* supaya header & footer ikut membulat di sudut */
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(14, 34, 128, 0.15);
+}
+
+/* --- HEADER --- */
+.header-kedai {
+    background: var(--biru);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 56px 24px 84px;
+    border: none;
+    /* tepi bawah miring, seperti sol sepatu */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+}
+
+.header-kedai h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.header-kedai h2 {
+    margin: 12px 0 0;
+    font-size: clamp(1rem, 2.4vw, 1.25rem);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+/* --- NAVIGASI --- */
+nav ul {
+    list-style-type: none;
+    margin: -8px 0 0;
+    padding: 12px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 700;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+nav ul li a:hover {
+    background-color: var(--biru);
+    color: #fff;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--kuning);
+    outline-offset: 2px;
+}
+
+/* --- JUDUL KATALOG --- */
+main {
+    padding: 8px 32px 24px;
+}
+
+#katalog-produk h3 {
+    margin: 24px 0;
+    padding-left: 14px;
+    border-left: 6px solid var(--kuning);
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+/* --- KARTU PRODUK --- */
+.kartu-produk {
+    position: relative;
+    isolation: isolate;
+    width: 100%; /* Mobile first: 1 kolom */
+    padding: 0 0 20px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid var(--garis);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* panel abu kebiruan di belakang foto */
+.kartu-produk::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    aspect-ratio: 1 / 1;
+    background-color: var(--panel);
+    z-index: -1;
+}
+
+.kartu-produk img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    padding: 20px;
+    object-fit: contain;
+    margin: 0;
+    mix-blend-mode: multiply; /* latar putih foto menyatu dengan panel */
+    transition: transform 0.3s ease;
+}
+
+.kartu-produk h4 {
+    margin: 16px 18px 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* label harga */
+.kartu-produk p {
+    display: inline-block;
+    margin: 0;
+    padding: 4px 12px;
+    background-color: var(--kuning);
+    color: var(--ink);
+    font-size: 1.05rem;
+    font-weight: 800;
+    border-radius: 6px;
+}
+
+@media (hover: hover) {
+    .kartu-produk:hover {
+        transform: translateY(-6px);
+        border-color: var(--biru);
+        box-shadow: 0 16px 32px rgba(22, 52, 184, 0.18);
+    }
+
+    .kartu-produk:hover img {
+        transform: scale(1.06);
+    }
+}
+
+/* --- FLEXBOX & MEDIA QUERY --- */
+.wadah-katalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+/* Tablet: 2 kolom */
+@media (min-width: 600px) {
+    .kartu-produk {
+        width: calc(50% - 12px);
+    }
+}
+
+/* Desktop: 3 kolom */
+@media (min-width: 900px) {
+    .kartu-produk {
+        width: calc(33.333% - 16px);
+    }
+}
+
+/* HP kecil: kurangi ruang agar tidak terlalu lega */
+@media (max-width: 599px) {
+    body {
+        padding: 10px;
+    }
+
+    .header-kedai {
+        padding: 40px 20px 64px;
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), 0 100%);
+    }
+
+    main {
+        padding: 8px 16px 16px;
+    }
+}
+
+/* --- FOOTER --- */
+footer {
+    margin: 16px 0 0;
+    padding: 24px 20px;
+    text-align: center;
+    background-color: var(--biru-tua);
+    color: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 0.9rem;
+}
+
+/* --- HORMATI PENGGUNA YANG MEMATIKAN ANIMASI --- */
+@media (prefers-reduced-motion: reduce) {
+    .kartu-produk,
+    .kartu-produk img,
+    nav ul li a {
+        transition: none;
+    }
+
+    .kartu-produk:hover,
+    .kartu-produk:hover img {
+        transform: none;
+    }
+}
+
+
+/* =========================================================
+   TOMBOL BELI & KERANJANG (tampilan saja)
+   ========================================================= */
+
+/* --- Baris harga + tombol Beli --- */
+.baris-beli {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 0 18px;
+}
+
+.tombol-beli {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 9px 22px;
+    color: #fff;
+    background-color: var(--biru);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.tombol-beli:hover {
+    background-color: var(--biru-tua);
+}
+
+.tombol-beli:active {
+    transform: scale(0.96);
+}
+
+button:focus-visible {
+    outline: 3px solid var(--biru);
+    outline-offset: 2px;
+}
+
+/* --- Menu Keranjang di navigasi --- */
+nav ul li button.buka-keranjang {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    font: inherit;
+    font-weight: 700;
+    color: var(--ink);
+    background: none;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+nav ul li button.buka-keranjang:hover {
+    background-color: var(--biru);
+    color: #fff;
+}
+
+/* --- Tombol keranjang melayang --- */
+.fab-keranjang {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 50;
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: var(--biru);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(22, 52, 184, 0.4);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.fab-keranjang:hover {
+    background-color: var(--biru-tua);
+    transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fab-keranjang,
+    .tombol-beli {
+        transition: none;
+    }
+}

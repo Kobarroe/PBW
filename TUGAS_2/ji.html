@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita Olahraga - Prestasi Bulu Tangkis Indonesia</title>
+    
+    <style>
+        /* ==================== CSS VARIABLES & THEME ==================== */
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --primary-color: #dc2626;
+            --primary-hover: #b91c1c;
+            --border-color: #e2e8f0;
+            --table-header: #f1f5f9;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --table-header: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ==================== BASE STYLES ==================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 36px 32px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        /* ==================== HEADER & TOP BAR ==================== */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            background-color: #fee2e2;
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+        }
+
+        [data-theme="dark"] .badge {
+            background-color: rgba(220, 38, 38, 0.2);
+        }
+
+        .theme-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--text-muted);
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        .meta-info {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin: 24px 0;
+        }
+
+        /* ==================== MEDIA / IMAGE ==================== */
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        figcaption {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* ==================== CONTENT ==================== */
+        h2 {
+            font-size: 1.4rem;
+            margin: 28px 0 12px 0;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            padding-left: 24px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* ==================== TABLE ==================== */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--table-header);
+            font-weight: 600;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        [data-theme="dark"] tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        /* ==================== ACTION BAR & FOOTER ==================== */
+        .action-bar {
+            display: flex;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 0.95rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: transform 0.1s, border-color 0.2s;
+        }
+
+        .btn-action:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-action:active {
+            transform: scale(0.96);
+        }
+
+        footer {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <!-- Top Toolbar -->
+        <div class="top-bar">
+            <span class="badge">Olahraga</span>
+            <button id="themeToggle" class="theme-btn" type="button">🌙 Mode Gelap</button>
+        </div>
+
+        <article>
+            <header>
+                <h1>Indonesia Borong Gelar Juara di Turnamen Bulu Tangkis Internasional</h1>
+                <p class="meta-info">
+                    Penulis: <b>Azriel Akbar</b> | Tanggal: <i>30 September 2026</i> | <span id="readingTime">⏱️ 1 mnt baca</span>
+                </p>
+            </header>
+
+            <hr>
+
+            <figure>
+                <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=600" alt="Pertandingan Bulu Tangkis" width="550">
+                <figcaption>Foto: Ilustrasi pertandingan bulu tangkis ganda putra.</figcaption>
+            </figure>
+
+            <!-- Isi Berita -->
+            <section>
+                <h2>Kemenangan Gemilang di Partai Final</h2>
+                <p>
+                    Tim bulu tangkis Indonesia kembali menorehkan prestasi gemilang di kancah internasional. 
+                    Pada partai puncak yang digelar akhir pekan ini, para atlet Merah Putih sukses mengamankan 
+                    posisi podium tertinggi setelah melewati pertandingan sengit melawan lawan-lawan tangguh dari berbagai negara.
+                </p>
+                <p>
+                    Kemenangan ini menjadi bukti konsistensi pembinaan atlet muda yang terus menunjukkan peningkatan 
+                    performa sepanjang musim turnamen tahun ini. Dukungan penuh dari para suporter turut membakar 
+                    semangat juang para atlet di lapangan.
+                </p>
+            </section>
+
+            <section>
+                <h2>Hasil Pertandingan Final</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sektor</th>
+                                <th>Wakil Indonesia</th>
+                                <th>Skor Pertandingan</th>
+                                <th>Hasil Akhir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ganda Putra</td>
+                                <td>Fajar / Rian</td>
+                                <td>21-18, 21-16</td>
+                                <td>Juara 1 (Emas)</td>
+                            </tr>
+                            <tr>
+                                <td>Tunggal Putra</td>
+                                <td>Jonatan Christie</td>
+                                <td>21-19, 19-21, 21-17</td>
+                                <td>Juara 1 (Emas)</td>
+                            </tr>
+                            <tr>
+                                <td>Tunggal Putri</td>
+                                <td>Gregoria Mariska</td>
+                                <td>18-21, 19-21</td>
+                                <td>Juara 2 (Perak)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>Informasi dan Fakta Terkait</h2>
+                <ul>
+                    <li>Turnamen ini diikuti oleh lebih dari 20 negara peserta.</li>
+                    <li>Indonesia berhasil keluar sebagai juara umum dengan perolehan dua medali emas.</li>
+                    <li>Jadwal turnamen berikutnya akan berlangsung di Eropa bulan depan.</li>
+                </ul>
+            </section>
+
+            <!-- Tombol Interaktif -->
+            <div class="action-bar">
+                <button id="likeBtn" class="btn-action" type="button">❤️ Suka (<span id="likeCount">0</span>)</button>
+                <button id="shareBtn" class="btn-action" type="button">🔗 Bagikan</button>
+            </div>
+        </article>
+
+        <hr>
+
+        <footer>
+            <p>
+                Sumber berita: 
+                <a href="https://www.antaranews.com/olahraga" target="_blank" rel="noopener noreferrer">Kantor Berita Antara Olahraga</a>
+            </p>
+        </footer>
+    </main>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // 1. Fitur Dark / Light Mode
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.innerHTML = '🌙 Mode Gelap';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '☀️ Mode Terang';
+            }
+        });
+
+        // 2. Fitur Like Button
+        let likes = 0;
+        const likeBtn = document.getElementById('likeBtn');
+        const likeCount = document.getElementById('likeCount');
+        
+        likeBtn.addEventListener('click', () => {
+            likes++;
+            likeCount.textContent = likes;
+            likeBtn.style.color = '#dc2626';
+            likeBtn.style.borderColor = '#dc2626';
+        });
+
+        // 3. Fitur Share Button
+        const shareBtn = document.getElementById('shareBtn');
+        shareBtn.addEventListener('click', async () => {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: document.title,
+                        url: window.location.href
+                    });
+                } catch (err) {
+                    console.log('Share dibatalkan.');
+                }
+            } else {
+                // Fallback salin tautan ke clipboard jika Web Share API tidak tersedia
+                navigator.clipboard.writeText(window.location.href);
+                alert('Tautan artikel berhasil disalin ke clipboard!');
+            }
+        });
+    </script>
+</body>
+</html>
